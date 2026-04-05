@@ -538,6 +538,104 @@ body:not(.light) .cat-title{ color:#fff; }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    /* ================= HISTORIA ================= */
+.history{
+    padding:80px 20px;
+}
+
+.history-content{
+    max-width:1100px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr;
+    gap:40px;
+    align-items:center;
+}
+
+/* TEXTO */
+.history-text h2{
+    font-size:26px;
+    margin-bottom:20px;
+}
+
+.history-text p{
+    font-size:15px;
+    line-height:1.6;
+    margin-bottom:15px;
+    color:var(--accent);
+}
+
+/* IMAGEN */
+.history-image img{
+    width:100%;
+    border-radius:25px;
+    object-fit:cover;
+}
+
+/* DESKTOP */
+@media(min-width:900px){
+    .history-content{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .history-text h2{
+        font-size:32px;
+    }
+
+    .history-text p{
+        font-size:16px;
+    }
+}
+</style>
+<section class="history">
+
+    <div class="history-content">
+
+        <div class="history-text">
+            <h2 data-i18n="history_title">Historia</h2>
+
+            <p data-i18n="history_p1">
+                El Mercado Municipal de Valdivia, construido en 1911, es uno de los espacios más emblemáticos de la ciudad.
+            </p>
+
+            <p data-i18n="history_p2">
+                Ubicado a orillas del río, este lugar ha sido durante más de un siglo un punto de encuentro para la cultura, la gastronomía y la vida local.
+            </p>
+
+            <p data-i18n="history_p3">
+                Hoy en día, combina tradición y turismo, ofreciendo productos del mar, artesanías y sabores típicos del sur de Chile.
+            </p>
+        </div>
+
+        <div class="history-image">
+            <img src="img/mercadovaldivia.png" alt="Mercado Valdivia">
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
 <!-- ================= MAPA ================= -->
 
 
@@ -592,7 +690,7 @@ body.light .cat-card{
     margin-top:20px;
     border-radius:25px;
     overflow:hidden;
-    height:500px;
+    height:400px;
 }
 </style>
 
@@ -864,6 +962,8 @@ const translations = {
         slogan: "Tradición, cultura y sabor desde 1911",
         categories_title: "Descubre el mercado",
         location_title: "Ubicación",
+        history_title: "Historia",
+
         restaurants: "Restaurantes",
         seafood: "Pescados y Mariscos",
         crafts: "Artesanía",
@@ -872,12 +972,20 @@ const translations = {
         vegetables: "Verduras",
         culture: "Cultura",
         cafe: "Cafetería",
-        address: "Yungay 425 - 447, Valdivia, Chile"
+
+        address: "Yungay 425 - 447, Valdivia, Chile",
+
+        history_p1: "El Mercado Municipal de Valdivia, construido en 1911, es uno de los espacios más emblemáticos de la ciudad.",
+        history_p2: "Ubicado a orillas del río, este lugar ha sido durante más de un siglo un punto de encuentro para la cultura, la gastronomía y la vida local.",
+        history_p3: "Hoy en día, combina tradición y turismo, ofreciendo productos del mar, artesanías y sabores típicos del sur de Chile."
     },
+
     en: {
         slogan: "Tradition, culture and flavor since 1911",
         categories_title: "Explore the market",
         location_title: "Location",
+        history_title: "History",
+
         restaurants: "Restaurants",
         seafood: "Fish & Seafood",
         crafts: "Crafts",
@@ -886,12 +994,20 @@ const translations = {
         vegetables: "Vegetables",
         culture: "Local culture",
         cafe: "Cafeteria",
-        address: "Yungay 425 - 447, Valdivia, Chile"
+
+        address: "Yungay 425 - 447, Valdivia, Chile",
+
+        history_p1: "The Valdivia Municipal Market, built in 1911, is one of the city's most iconic places.",
+        history_p2: "Located by the river, it has been a meeting point for culture, gastronomy and local life for over a century.",
+        history_p3: "Today, it blends tradition and tourism, offering seafood, crafts and typical southern Chilean flavors."
     },
+
     de: {
         slogan: "Tradition, Kultur und Geschmack seit 1911",
         categories_title: "Entdecke den Markt",
         location_title: "Standort",
+        history_title: "Geschichte",
+
         restaurants: "Restaurants",
         seafood: "Fisch & Meeresfrüchte",
         crafts: "Handwerk",
@@ -900,12 +1016,20 @@ const translations = {
         vegetables: "Gemüse",
         culture: "Kultur",
         cafe: "Café",
-        address: "Yungay 425 - 447, Valdivia, Chile"
+
+        address: "Yungay 425 - 447, Valdivia, Chile",
+
+        history_p1: "Der Mercado Municipal von Valdivia wurde 1911 erbaut und ist einer der bekanntesten Orte der Stadt.",
+        history_p2: "Am Fluss gelegen, ist er seit über einem Jahrhundert ein Treffpunkt für Kultur, Gastronomie und das lokale Leben.",
+        history_p3: "Heute verbindet er Tradition und Tourismus mit Meeresfrüchten, Kunsthandwerk und typischen Aromen Südchiles."
     },
+
     fr: {
         slogan: "Tradition, culture et saveur depuis 1911",
         categories_title: "Découvrez le marché",
         location_title: "Localisation",
+        history_title: "Histoire",
+
         restaurants: "Restaurants",
         seafood: "Poissons et fruits de mer",
         crafts: "Artisanat",
@@ -914,7 +1038,12 @@ const translations = {
         vegetables: "Légumes",
         culture: "Culture",
         cafe: "Café",
-        address: "Yungay 425 - 447, Valdivia, Chile"
+
+        address: "Yungay 425 - 447, Valdivia, Chile",
+
+        history_p1: "Le marché municipal de Valdivia, construit en 1911, est l'un des lieux les plus emblématiques de la ville.",
+        history_p2: "Situé au bord de la rivière, il est depuis plus d'un siècle un lieu de rencontre pour la culture, la gastronomie et la vie locale.",
+        history_p3: "Aujourd’hui, il combine tradition et tourisme, offrant fruits de mer, artisanat et saveurs typiques du sud du Chili."
     }
 };
 document.addEventListener("DOMContentLoaded", () => {
