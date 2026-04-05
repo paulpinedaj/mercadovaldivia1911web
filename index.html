@@ -239,6 +239,67 @@ body.light .nav{
     .center img{ width:220px; }
 }
 
+
+
+/* ================= LANG FIX ================= */
+.lang{
+    position:relative;
+    cursor:pointer;
+}
+
+/* botón visible */
+.lang-current{
+    font-size:20px;
+}
+
+/* dropdown */
+.lang-dropdown{
+    position:absolute;
+    top:45px;
+    right:0;
+
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+
+    padding:12px;
+    border-radius:16px;
+
+    opacity:0;
+    pointer-events:none;
+    transform:translateY(10px) scale(0.95);
+    transition:0.25s;
+}
+
+/* estado abierto */
+.lang.open .lang-dropdown{
+    opacity:1;
+    pointer-events:auto;
+    transform:translateY(0) scale(1);
+}
+
+/* items */
+.lang-dropdown div{
+    font-size:18px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.lang-dropdown div:hover{
+    transform:scale(1.2);
+}
+
+/* estilos */
+body:not(.light) .lang-dropdown{
+    background:rgba(20,20,20,0.9);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+body.light .lang-dropdown{
+    background:#fff;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
 </style>
 </head>
 
@@ -249,6 +310,20 @@ body.light .nav{
     <img src="logo/logo-mercado-valdivia.svg">
 
     <div class="nav-right">
+
+
+               <div class="lang" id="lang">
+            <div class="lang-current">🇪🇸</div>
+
+            <div class="lang-dropdown">
+                <div data-lang="es">🇪🇸</div>
+                <div data-lang="en">🇺🇸</div>
+                <div data-lang="de">🇩🇪</div>
+                <div data-lang="fr">🇫🇷</div>
+            </div>
+        </div>
+
+
         <div class="theme" id="theme"></div>
         <div>☰</div>
     </div>
@@ -266,8 +341,9 @@ body.light .nav{
 
 <div class="center" id="center">
     <img src="logo/logo-mercado-valdivia.svg">
-    <div class="slogan">Tradición, cultura y sabor desde 1911</div>
-</div>
+<div class="slogan" data-i18n="slogan">
+    Tradición, cultura y sabor desde 1911
+</div></div>
 
 <button class="btn btn-left" id="prev">‹</button>
 <button class="btn btn-right" id="next">›</button>
@@ -278,20 +354,389 @@ body.light .nav{
 </div>
 </div>
 
+
+
+
+
+
+
+
+<style>
+ /* ================= CATEGORIAS PRO ULTRA ================= */
+.categories{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.categories h2{
+    font-size:26px;
+    margin-bottom:50px;
+}
+
+/* GRID */
+.cat-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:20px;
+    max-width:1000px;
+    margin:auto;
+}
+
+/* CARD */
+.cat-card{
+    position:relative;
+    border-radius:24px;
+    padding:30px 20px;
+    transition:0.35s;
+    cursor:pointer;
+    backdrop-filter: blur(10px);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+}
+
+/* DARK MODE */
+body:not(.light) .cat-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+/* LIGHT MODE */
+body.light .cat-card{
+    background:#fff;
+    border:1px solid rgba(0,0,0,0.05);
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* HOVER */
+.cat-card:hover{
+    transform:translateY(-8px) scale(1.03);
+}
+
+/* ICONO SVG */
+.cat-icon{
+    width:38px;
+    height:38px;
+}
+
+.cat-icon svg{
+    width:100%;
+    height:100%;
+    stroke:currentColor;
+    fill:none;
+    stroke-width:1.8;
+}
+
+/* COLOR ICONOS */
+body.light .cat-icon{
+    color:#111;
+}
+
+body:not(.light) .cat-icon{
+    color:#fff;
+}
+
+/* TITULO */
+.cat-title{
+    font-size:14px;
+    font-weight:600;
+}
+
+/* TEXTO */
+body.light .cat-title{ color:#111; }
+body:not(.light) .cat-title{ color:#fff; }
+
+/* RESPONSIVE */
+@media(max-width:500px){
+    .cat-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(min-width:900px){
+    .cat-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+</style>
+
+
+<section class="categories">
+<h2 data-i18n="categories_title">Descubre el mercado</h2>
+
+    <div class="cat-grid">
+
+        <!-- RESTAURANTES -->
+        <div class="cat-card">
+            <div class="cat-icon">
+                <svg viewBox="0 0 24 24"><path d="M4 3v7a4 4 0 004 4v7M8 3v7M12 3v18"/></svg>
+            </div>
+<div class="cat-title" data-i18n="restaurants">Restaurantes</div>
+        </div>
+
+        <!-- MARISCOS -->
+        <div class="cat-card">
+            <div class="cat-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 12s3-6 9-6 9 6 9 6-3 6-9 6-9-6-9-6z"/></svg>
+            </div>
+<div class="cat-title" data-i18n="seafood">Mariscos</div>
+        </div>
+
+        <!-- ARTESANIA -->
+        <div class="cat-card">
+            <div class="cat-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 3l9 6-9 6-9-6 9-6z"/></svg>
+            </div>
+<div class="cat-title" data-i18n="crafts">Artesanía</div>
+        </div>
+
+        <!-- SOUVENIR -->
+        <div class="cat-card">
+            <div class="cat-icon">
+                <svg viewBox="0 0 24 24"><path d="M6 2h12l2 6H4l2-6zM4 8h16v14H4z"/></svg>
+            </div>
+<div class="cat-title" data-i18n="souvenirs">Souvenirs</div>
+        </div>
+
+        <!-- PRODUCTOS -->
+        <div class="cat-card">
+            <div class="cat-icon">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg>
+            </div>
+<div class="cat-title" data-i18n="local_products">Productos locales</div>
+        </div>
+
+        <!-- VERDURAS -->
+        <div class="cat-card">
+            <div class="cat-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8 6 6 10 6 14a6 6 0 0012 0c0-4-2-8-6-12z"/></svg>
+            </div>
+<div class="cat-title" data-i18n="vegetables">Verduras</div>
+        </div>
+
+        <!-- CULTURA -->
+        <div class="cat-card">
+            <div class="cat-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg>
+            </div>
+<div class="cat-title" data-i18n="culture">Cultura</div>
+        </div>
+
+        <!-- CAFE -->
+        <div class="cat-card">
+            <div class="cat-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 8h15v8H3zM18 10h2a2 2 0 010 4h-2"/></svg>
+            </div>
+<div class="cat-title" data-i18n="cafe">Cafetería</div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<!-- ================= MAPA ================= -->
+
+
+<style>
+    /* ================= CATEGORIAS ================= */
+.categories{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.categories h2{
+    margin-bottom:30px;
+    font-size:22px;
+}
+
+.cat-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:15px;
+}
+
+.cat-card{
+    background:var(--card);
+    color:#111;
+    padding:20px 10px;
+    border-radius:20px;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.cat-card:hover{
+    transform:translateY(-5px);
+}
+
+.cat-card span{
+    font-size:30px;
+    display:block;
+    margin-bottom:8px;
+}
+
+body.light .cat-card{
+    background:#fff;
+}
+
+/* ================= MAPA ================= */
+.map-section{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.map-box{
+    margin-top:20px;
+    border-radius:25px;
+    overflow:hidden;
+    height:350px;
+}
+</style>
+
+
+<style>
+    /* ================= FOOTER PRO ================= */
+.footer{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.footer-logo{
+    width:120px;
+    margin-bottom:15px;
+}
+
+.footer-address{
+    color:var(--accent);
+    margin-bottom:30px;
+    font-size:14px;
+}
+
+/* CONTENEDOR */
+.socials{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+/* BOTONES */
+.social-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:12px 18px;
+    border-radius:999px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+
+    transition:0.3s;
+    backdrop-filter:blur(10px);
+}
+
+/* ICONO */
+.social-btn .icon{
+    width:22px;
+    height:22px;
+}
+
+.social-btn svg{
+    width:100%;
+    height:100%;
+    stroke:currentColor;
+    fill:none;
+    stroke-width:1.8;
+}
+
+/* DARK MODE */
+body:not(.light) .social-btn{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    color:#fff;
+}
+
+/* LIGHT MODE */
+body.light .social-btn{
+    background:#fff;
+    border:1px solid rgba(0,0,0,0.05);
+    color:#111;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* HOVER GENERAL */
+.social-btn:hover{
+    transform:translateY(-4px) scale(1.03);
+}
+
+/* INSTAGRAM COLOR */
+.social-btn:nth-child(1):hover{
+    background:linear-gradient(45deg,#ff0050,#ff7a00,#ffd500);
+    color:#fff;
+}
+
+/* FACEBOOK COLOR */
+.social-btn:nth-child(2):hover{
+    background:#1877f2;
+    color:#fff;
+}
+
+/* RESPONSIVE */
+@media(max-width:500px){
+    .social-btn{
+        width:100%;
+        justify-content:center;
+    }
+}
+</style>
+<section class="map-section">
+<h2 data-i18n="location_title">Ubicación</h2>
+    <div id="map" class="map-box"></div>
+</section>
+
+<!-- Leaflet (OpenStreetMap) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <!-- FOOTER -->
+<!-- FOOTER PRO -->
 <div class="footer" id="footer">
-    <img src="logo/logo-mercado-valdivia.svg">
-    <p>Yungay #400, Valdivia, Chile</p>
+    
+    <img src="logo/logo-mercado-valdivia.svg" class="footer-logo">
+
+    <p class="footer-address">
+        Yungay 425 - 447, Valdivia, Chile
+    </p>
 
     <div class="socials">
-        <a href="https://www.instagram.com/mercadovaldivia1911/" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M7 2C4 2 2 4 2 7v10c0 3 2 5 5 5h10c3 0 5-2 5-5V7c0-3-2-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10z"/></svg>
-         </a>
-        <a href="#" target="_blank">
 
-        <svg viewBox="0 0 24 24"><path d="M13 3h4v4h-3v3h3v4h-3v7h-4v-7H7v-4h3V7c0-2 1-4 3-4z"/></svg>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/mercadovaldivia1911/" target="_blank" class="social-btn">
+            <div class="icon">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="18" height="18" rx="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17" cy="7" r="1.5"/>
+                </svg>
+            </div>
+            <span>Instagram</span>
         </a>
+
+        <!-- Facebook -->
+        <a href="#" target="_blank" class="social-btn">
+            <div class="icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M13 3h4v4h-3v3h3v4h-3v7h-4v-7H7v-4h3V7c0-2 1-4 3-4z"/>
+                </svg>
+            </div>
+            <span>Facebook</span>
+        </a>
+
     </div>
+
 </div>
 
 <script>
@@ -361,7 +806,170 @@ themeBtn.onclick=()=>{
     );
     renderIcon();
 };
+
+
+
+/* ================= MAPA ================= */
+
+// Coordenadas Mercado Valdivia
+const lat = -39.812949;
+const lng = -73.247813;
+// Crear mapa
+const map = L.map('map').setView([lat, lng], 26);
+
+// Tiles modo claro
+const lightMap = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png');
+
+// Tiles modo oscuro (Carto)
+const darkMap = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png');
+
+// detectar tema
+function loadMapTheme(){
+    if(document.body.classList.contains("light")){
+        map.removeLayer(darkMap);
+        lightMap.addTo(map);
+    }else{
+        map.removeLayer(lightMap);
+        darkMap.addTo(map);
+    }
+}
+
+loadMapTheme();
+
+// marcador con tu logo
+const icon = L.icon({
+    iconUrl: 'logo/logo-mercado-valdivia.svg',
+    iconSize: [50,50],
+    iconAnchor: [25,50]
+});
+
+L.marker([lat, lng], {icon}).addTo(map)
+.bindPopup("Mercado Valdivia 1911");
+
+// actualizar cuando cambie tema
+themeBtn.addEventListener("click", ()=>{
+    loadMapTheme();
+});
+
+
+
 </script>
 
+
+
+
+<script>
+   const translations = {
+    es: {
+        slogan: "Tradición, cultura y sabor desde 1911",
+        categories_title: "Descubre el mercado",
+        location_title: "Ubicación",
+        restaurants: "Restaurantes",
+        seafood: "Mariscos",
+        crafts: "Artesanía",
+        souvenirs: "Souvenirs",
+        local_products: "Productos locales",
+        vegetables: "Verduras",
+        culture: "Cultura",
+        cafe: "Cafetería",
+        address: "Yungay 425 - 447, Valdivia, Chile"
+    },
+    en: {
+        slogan: "Tradition, culture and flavor since 1911",
+        categories_title: "Explore the market",
+        location_title: "Location",
+        restaurants: "Restaurants",
+        seafood: "Seafood",
+        crafts: "Crafts",
+        souvenirs: "Souvenirs",
+        local_products: "Local products",
+        vegetables: "Vegetables",
+        culture: "Local culture",
+        cafe: "Cafeteria",
+        address: "Yungay 425 - 447, Valdivia, Chile"
+    },
+    de: {
+        slogan: "Tradition, Kultur und Geschmack seit 1911",
+        categories_title: "Entdecke den Markt",
+        location_title: "Standort",
+        restaurants: "Restaurants",
+        seafood: "Meeresfrüchte",
+        crafts: "Handwerk",
+        souvenirs: "Souvenirs",
+        local_products: "Lokale Produkte",
+        vegetables: "Gemüse",
+        culture: "Kultur",
+        cafe: "Café",
+        address: "Yungay 425 - 447, Valdivia, Chile"
+    },
+    fr: {
+        slogan: "Tradition, culture et saveur depuis 1911",
+        categories_title: "Découvrez le marché",
+        location_title: "Localisation",
+        restaurants: "Restaurants",
+        seafood: "Fruits de mer",
+        crafts: "Artisanat",
+        souvenirs: "Souvenirs",
+        local_products: "Produits locaux",
+        vegetables: "Légumes",
+        culture: "Culture",
+        cafe: "Café",
+        address: "Yungay 425 - 447, Valdivia, Chile"
+    }
+};
+document.addEventListener("DOMContentLoaded", () => {
+
+    const langBox = document.getElementById("lang");
+    const langItems = document.querySelectorAll(".lang-dropdown div");
+
+    // abrir / cerrar
+    langBox.addEventListener("click", (e)=>{
+        e.stopPropagation();
+        langBox.classList.toggle("open");
+    });
+
+    document.addEventListener("click", ()=>{
+        langBox.classList.remove("open");
+    });
+
+    langBox.querySelector(".lang-dropdown").addEventListener("click", (e)=>{
+        e.stopPropagation();
+    });
+
+    let currentLang = localStorage.getItem("lang") || "es";
+
+    function applyLanguage(lang){
+        document.querySelectorAll("[data-i18n]").forEach(el=>{
+            const key = el.getAttribute("data-i18n");
+            if(translations[lang][key]){
+                el.textContent = translations[lang][key];
+            }
+        });
+
+        const flagMap = {
+            es: "🇪🇸",
+            en: "🇺🇸",
+            de: "🇩🇪",
+            fr: "🇫🇷"
+        };
+
+        document.querySelector(".lang-current").textContent = flagMap[lang];
+
+        localStorage.setItem("lang", lang);
+    }
+
+    langItems.forEach(item=>{
+        item.addEventListener("click", ()=>{
+            const lang = item.dataset.lang;
+            applyLanguage(lang);
+            langBox.classList.remove("open");
+        });
+    });
+
+    applyLanguage(currentLang);
+
+});
+
+</script>
 </body>
 </html>
