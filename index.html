@@ -47,7 +47,7 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    z-index:100;
+    z-index:1000;
 
     opacity:0;
     transition:0.8s ease;
@@ -56,6 +56,7 @@ body{
 .nav.show{
     opacity:1;
     transform:translateX(-50%) translateY(0);
+
 }
 
 body.light .nav{
@@ -1100,12 +1101,10 @@ themeBtn.onclick=()=>{
     loadMapTheme();
 };
 
-
 /* ================= MAPA ================= */
-const lat = -39.812949;
-const lng = -73.247813;
-
-const map = L.map('map').setView([lat, lng], 16);
+const lat = -39.813015;
+const lng = -73.247845;
+const map = L.map('map').setView([lat, lng], 13);
 
 const lightMap = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png');
 const darkMap = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png');
